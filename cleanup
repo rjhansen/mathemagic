@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for ext in "toc" "aux" "log" "out" "dvi" "ps";
+  do for fn in `find . -name "*.$ext"`; 
+    do rm -f $fn;
+    done
+  done
