@@ -1,0 +1,231 @@
+\documentclass[10pt,letterpaper,oneside,notitlepage]{article}
+\usepackage{textcomp}
+\usepackage[x11names]{xcolor}
+\usepackage{mathtools}
+\usepackage{concmath}
+\usepackage{merriweather}
+%\usepackage{eulervm}
+\usepackage{tabularray}
+\usepackage{hyperref}
+\usepackage{colortbl}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\hypersetup{
+    colorlinks = true,
+    allcolors = blue
+}
+\usepackage{url}
+
+\begin{document}
+\title{A Little Mathemagic}
+\author{Rob Hansen \href{mailto:rob@hansen.engineering?subject=A\%20Little\%20Mathemagic}{\textlangle rob@hansen.engineering\textrangle}}
+\maketitle
+\tableofcontents
+\begin{abstract}
+  \noindent
+  The question was posed, ``do things really get heavier as they move
+faster?'' The answer---``not really, but it sure looks that way''---is a
+little easier to understand with some math.
+\end{abstract}
+
+\section{Preface}
+\subsection{Dedication and thanks}
+For Nick and Alex, Silas, Milo and Margot. You're too young to be dealing
+with physics or algebra yet, but when the time comes I hope your parents
+share this and tell you I was so weird I wrote this \textit{for fun.}
+
+Thanks to \href{https://startswithabang.com}{Dr.~Ethan Siegel}
+\footnote{\textit{https://startswithabang.com}} for the
+initial inspiration to write this.
+
+\subsection{Legal notices}
+You may use and share this work under the terms of the 
+\href{https://creativecommons.org/licenses/by-nd/4.0/}{Creative Commons Attribution-NoDerivatives 4.0 International}
+\footnote{\textit{https://creativecommons.org/licenses/by-nd/4.0/}} license.
+
+\subsection{Getting the latest and reporting errors}
+This is a living document. You can always find the latest release at 
+\href{https://github.com/rjhansen/mathemagic/releases}{its GitHub page}.
+\footnote{\textit{https://github.com/rjhansen/mathemagic/releases}}
+
+I've taken all reasonable care in preparing this, but errors sometimes
+make it through. If you find one, please
+\href{https://github.com/rjhansen/mathemagic/issues}{let me know}.
+\footnote{\textit{https://github.com/rjhansen/mathemagic/issues}}
+
+\section{Where Things Stand}
+When I was in undergrad, we learned that as an object gained
+velocity it also gained mass. There was a special word given to this mass,
+namely \textit{relativistic mass,} to separate it from the concept of the
+mass of the same object at rest, or \textit{rest mass.}
+
+Neither term is in good form any more. Instead, all mass is rest mass,
+and ``relativistic mass'' is better understood to be just ``how velocity
+affects an observer's view of things.''
+
+\subsection{Why was the old way a problem?}
+
+It raised many more questions than answers. If more mass was being created,
+well, from where? Out of what? If you had a just-barely subcritical mass
+of $^{239}_{94}\text{Pu}$ and gave it to Fernando Valenzuela, could he throw it fast
+enough to trigger an atomic explosion? Were there additional elementary
+particles being created? How were they structured? Did this mean two
+observers, one at speed and one at rest, would disagree about how many
+moles of a chemical they each saw?
+
+That last one was a real nail-biter. Relativity was already demanding so
+much of physicists: the inability to agree on simultaneity, distance, time,
+mass, and more. Were we going to have to add even \textit{counting} to that?
+
+\subsection{How did we resolve it?}
+
+By realizing we didn't need relativistic mass at all. Instead, we now
+realize that velocity doesn't add mass: it simply amplifies the way
+mass interacts with the cosmos. And we did this with nothing more than
+$E = mc^{2}$!
+
+Well, kind of.
+
+\section{The details}
+
+Einstein didn't equate mass with energy: he equated mass \textit{and
+momentum} with energy. The total energy of a system isn't given only by
+its mass, but also by how much energy it's storing in its motion
+(kinetic energy). The actual, full version of the mass-momentum-energy
+equation is:
+
+\[
+E^{2} = m^{2}c^{4} + p^{2}c^{2}
+\]
+
+From just this one equation, we can see how apparent mass changes with
+velocity. Let's dive in!
+
+\subsection{The derivation}
+
+\begin{longtblr}{
+  colspec = { c p{5cm} p{5cm} },
+  row{even} = {Ivory2},
+  width = \linewidth,
+  rowhead = 1
+}
+  Step & Equation & Justification \\
+  1 & \[ E^{2} = m^{2}c^{4} + p^{2}c^{2} \] & Always begin derivations by restating
+  the information given. In this case, since we were given Einstein's
+  equation for the mass-momentum-energy equivalence, we write that down. \\
+  2 & \[ \pm E = \sqrt{m^{2}c^{4} + p^{2}c^{2}} \] & Take the square root of
+  both sides\\
+  3 & \[ \sqrt{m^{2}c^{4} + p^{2}c^{2}} \] & We're going to omit the left-hand
+  side going forward, as it's not going to undergo any changes.\\
+  4 & \[ \sqrt{m^{2}c^{4} + m^{2}\gamma^{2}v^{2}c^{2}} \] & Since in relativity
+  momentum ($p$) is mass ($m$), the Lorentz factor ($\gamma$), and velocity ($v$),
+  we replace $p$ with $m\gamma v$. Following the normal rules of algebra, 
+  $p^{2} = m^{2}\gamma^{2}v^{2}$.\\
+  5 & \[ \gamma = \frac{1}{\sqrt{1 - \left(\frac{v}{c}\right)^{2}}}\] & This is
+  the Lorentz factor. We'll make use of this later. \\
+  6 & \[ \gamma = \frac{1}{\sqrt{1 - \beta^{2}}}\] & $\frac{v}{c}$, or ``just
+  what fraction of lightspeed are you traveling?'', comes up so
+  frequently in physics it's usually just referred to as $\beta$.\\
+  7 & \[ \sqrt{m^{2}c^{2}\left(c^{2} + \gamma^{2}v^{2}\right)} \] & Since both our terms
+  under the square root sign have an $m^{2}c^{2}$, we can simplify things a
+  little bit more by moving it out front as a shared factor.\\
+  8 & \[ \sqrt{m^{2}c^{4}\left(1 + \frac{\gamma^{2}v^{2}}{c^{2}}\right)} \] & Dividing the
+  second term by $c^{2}$ gives us another $c^{2}$ term to collect out
+  front.\\
+  9 & \[ \sqrt{m^{2}c^{4}\left(1 + \gamma^{2}\beta^{2}\right)}\] & \ldots and
+  look, we can replace the $\frac{v^{2}}{c^{2}}$ with $\beta^{2}$.\\
+  10 & \[ \sqrt{m^{2}c^{4}\left(1 + \beta^{2}\gamma^{2}\right)}\] &
+  Reformat the $\beta$-term for ease of reading. ($\beta$ comes before $\gamma$
+  in the Greek alphabet, and just as an $xy$ term looks more natural to us than
+  $yx$, so too do Greek-symboled equations look better if they're in order.)\\
+  11 & \[ \sqrt{m^{2}c^{4}}\cdot\sqrt{1 + \beta^{2}\gamma^{2}} \] &
+  $\sqrt{ab} = \sqrt{a}\cdot\sqrt{b}$\\
+  12 & \[ \pm mc^{2}\sqrt{1 + \beta^{2}\gamma^{2}} \] & Since 
+  $\sqrt{m^{2}c^{4}} = \pm mc^{2}$, we simplify and substitute.\\
+  13 & \[ \gamma = \frac{1}{\sqrt{1 - \beta^2}}\] & Restatement of \#6\\
+  14 & \[ \gamma^2 = \frac{1}{1 - \beta^2}\] & Simplify\\
+  15 & \[ \beta^{2}\gamma^{2} = \frac{\beta^2}{1 - \beta^2}\] & Express our Lorentz term
+  entirely in terms of ``just what fraction of lightspeed is it going?''\\
+  16 & \[ \pm mc^{2}\sqrt{1 + \frac{\beta^2}{1 - \beta^2}} \] & \#12, simplified\\
+  17 & \[ \pm E = \pm mc^{2}\sqrt{1 + \frac{\beta^2}{1 - \beta^2}} \] & 
+  Re-introduce our long-ignored left-hand side\\
+  18 & \[ E = mc^{2}\sqrt{1 + \frac{\beta^2}{1 - \beta^2}} \] & Restrict ourselves
+  to positive-mass, positive-energy solutions\\
+  19 & \[ E = mc^{2} \] & At low speeds, $\beta\approx0$. $\sqrt{1 + \frac{0^2}{1 - 0^2}}$
+  is going to be ridiculously close to $1$, meaning that massive particles at rest obey
+  $E = mc^2$.\\
+\end{longtblr}
+
+\subsection{Notes on the derivation}
+
+Although each mathematical step is fully presented and justified, there
+are some physics issues that come up in the doing. They're discussed here.
+
+\begin{enumerate}
+  \setcounter{enumi}{1}
+  \item
+  Every mathematician will tell you that square roots computed over the
+  positive reals always produce two answers, one positive and one negative.
+  This causes mathematicians to wonder, ``that's odd: do negative energies
+  actually exist?'' Physicists have generally decided they're much 
+  happier ignoring the implications of such rigor.
+  \setcounter{enumi}{3}
+  \item
+  Well, almost. This is a correct statement for the momentum of things
+  that have mass. But massless particles $\left(m = 0\right)$ like photons also
+  have energy, which means they also have momentum. It's just that we
+  have to compute it differently: photon momentum, for instance, is
+  $p = \frac{h}{\lambda}$, where $h$ is Planck's constant and $\lambda$
+  the wavelength. (Or, equivalently, $p = hf$, where $f$ is its
+  frequency.)
+  \setcounter{enumi}{7}
+  \item
+  It's okay if you don't immediately see why this is a
+  big win---it's the kind of thing you develop a sort of mathematical
+  intuition about. Your sense of smell will come along as you do more
+  algebra.
+  \setcounter{enumi}{16}
+  \item
+  If you've ever wondered where speculative physics gets
+  the idea for negative energy, the answer is right here! Einstein's
+  theory of relativity clearly allows for the possibility of negative
+  energy, as well as negative mass. Of course, just because something
+  is permitted by our theories doesn't mean the cosmos actually does
+  it\ldots
+  \item
+  The physics community has an
+  odd take on the weirder bits of Einstein. If you openly state your 
+  paper is basically science fiction, you can talk about negative masses
+  and energies all you want. On the other hand, if you have the temerity 
+  to try submitting a negative mass or energy condition in a Real Physics
+  Paper they'll laugh you out of town. So, with reluctance, we erase the
+  $\pm$ symbol and arbitrarily, and without evidence, declare the universe
+  to only permit positive solutions.
+\end{enumerate}
+
+\section{Conclusion}
+According to Einstein's full mass-momentum-energy equation, the energy
+of a body in motion is proportional to its mass, the square of the speed
+of light, and a square-root term that all hinges around how fast the body
+is moving. We don't need to introduce bizarre notions of ``relativistic
+mass'' to explain the additional energy picked up by objects as they
+travel: that's fully explained just by the presence of the final term.
+
+We now have answers to all our thorny questions from earlier.
+
+\begin{itemize}
+  \item
+  \textbf{If more mass is being created, well, from where? Out of what?}
+  No new mass is created.
+
+  \item
+  \textbf{Could a Hall of Fame baseball pitcher throw a baseball made 
+  of plutonium fast enough that it would become a critical mass and explode?}
+  No, thankfully.
+
+  \item
+  \textbf{Can two observers agree on how many moles of a chemical they see?}
+  Sure.
+\end{itemize}
+
+\end{document}
